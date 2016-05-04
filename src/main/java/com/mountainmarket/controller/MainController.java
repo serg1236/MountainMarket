@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Sergiy_Dakhniy
@@ -19,12 +20,13 @@ public class MainController {
     private UserRepository userRepository;
 
     @RequestMapping("/")
-    @ResponseBody
-    String hello() {
+    ModelAndView hello() {
+        ModelAndView mv = new ModelAndView("hello");
         User user = new User();
         user.setLogin("admin");
         user.setPassword("1111");
         userRepository.save(user);
-        return "hello world!";
+        mv.addObject("message", "hello world!");
+        return mv;
     }
 }
