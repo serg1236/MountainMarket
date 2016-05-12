@@ -6,8 +6,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Mountain Market</title>
+    <%@include file="partials/head.jsp" %>
 </head>
-<body>
-    <h1>${message}</h1>
+<body ng-controller="MainCtrl">
+    <div id="page" class="no-display">
+        <%@include file="partials/header.jsp" %>
+        <main class="container">
+            <h1>${message}</h1>
+        </main>
+        <%@include file="partials/footer.jsp" %>
+    </div>
+    <%@include file="partials/preloader.jsp" %>
 </body>
 </html>

@@ -17,13 +17,15 @@ import java.io.IOException;
 
 @Configuration
 @EnableWebMvc
-@ImportResource("classpath:root-context.xml")
+@ImportResource({"classpath:root-context.xml", "classpath:security.xml"})
 @ComponentScan("com.mountainmarket.controller")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("images/**").addResourceLocations("images/");
+        registry.addResourceHandler("scripts/**").addResourceLocations("scripts/");
+        registry.addResourceHandler("styles/**").addResourceLocations("styles/");
     }
 
     @Bean

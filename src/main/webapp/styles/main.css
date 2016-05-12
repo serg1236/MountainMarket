@@ -1,0 +1,70 @@
+.image-wrapper{
+	position: relative;
+}
+.delete-button{
+	position: absolute;
+	text-align: right;
+	top: 30px;
+	right:30px;
+	z-index: 10;
+}
+.content-image{
+	position: relative; 
+	z-index: 1;
+}
+
+.no-display{
+	display:none;
+}
+
+.main-preloader{
+	margin-top:20%;
+}
+
+#page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+#page.no-display{
+	display:none;
+}
+
+main {
+   flex: 1 0 auto;
+ }
+ 
+ .stretch-vertically{
+ 	height: 100%;
+ }
+ 
+ .cursor-pointer{
+ 	cursor: pointer;
+ }
+
+ #logo-container {
+    display: flex;
+ }
+
+ #logo-container>i {
+    line-height: inherit;
+    display: inline-flex;
+ }
+
+ .panorama {
+    max-height: 100px;
+    overflow: hidden;
+ }
+
+ .panorama>img {
+    width: 100%;
+ }
+
+ .login-icon>i {
+    line-height: inherit;
+ }
+
+ .header-menu {
+    display: list-item;
+ }
