@@ -199,6 +199,12 @@
             <version>${spring.security.ver}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.restfb</groupId>
+            <artifactId>restfb</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+
 
     </dependencies>
 

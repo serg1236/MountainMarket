@@ -7,7 +7,7 @@
 <body>
     <header>
         <div class="panorama hide-on-small-and-down">
-            <img src="/images/panorama.jpg"/>
+            <img src="/images/panorama.JPG"/>
         </div>
         <nav class="light-green darken-3" role="navigation">
             <div class="nav-wrapper container">
@@ -21,7 +21,18 @@
                     <li ><a class="btn-flat white-text">Tours</a></li>
                     <li ><a class="btn-flat white-text">Routes</a></li>
                     <li ><a class="btn-flat white-text">Places</a></li>
-                    <a href="#login-form" class="btn-flat white-text light-green darken-1 modal-trigger">Login</a>
+                    <sec:authorize access="isAnonymous()">
+                        <a href="#login-form" class="btn-flat white-text light-green darken-1 modal-trigger">Login</a>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                        <a class='dropdown-button btn light-green darken-1' href='#' data-activates='login-dropdown'>
+                          <sec:authentication property="principal.username" />
+                        </a>
+                        <ul id='login-dropdown' class='dropdown-content'>
+                            <li><a href="#!">My profile</a></li>
+                            <li><a href="/logout_from_app">Logout</a></li>
+                        </ul>
+                    </sec:authorize>
                 </ul>
                 <a href="#login-form" class="login-icon hide-on-large-only right modal-trigger"><i class="material-icons">perm_identity</i></a>
                 <ul class="side-nav" id="main-sidenav">

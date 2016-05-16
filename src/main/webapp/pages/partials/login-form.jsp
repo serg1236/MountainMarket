@@ -6,24 +6,29 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<body>
+<body >
     <div id="login-form" class="modal">
-        <div class="modal-content">
-            <h4>Login</h4>
-            <div class="input-field">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">Login or email</label>
+        <form ng-controller="LoginCtrl" action="<c:url value='/login_to_app' />" method="POST" ng-submit="submit($event)">
+            <div class="modal-content">
+                <h4>Login</h4>
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="login" name="login" type="text" ng-model="data.login" ng-change="change()">
+                    <label for="login">Login or email</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <input id="password" type="password" name="password" ng-model="data.password" ng-change="change()">
+                    <label for="password">Password</label>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">vpn_key</i>
-                <input id="icon_telephone" type="tel" class="validate">
-                <label for="icon_telephone">Password</label>
+            <div class="modal-footer">
+                <div class="login-error-message red-text" ng-show="loginError">Invalid username or password</div>
+                <button class="btn waves-effect waves-light login" type="submit">Login
+                </button>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
             </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn light-green darken-3">Login</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-        </div>
+        </form>
     </div>
 </body>

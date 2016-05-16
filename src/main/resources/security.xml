@@ -29,11 +29,7 @@
             password-parameter="password"
             login-processing-url="/login_to_app"/>
         <logout logout-success-url="/?logout" logout-url="/logout_from_app" invalidate-session="true"/>
-        <csrf/>
-        <remember-me
-            token-validity-seconds="1209600"
-            remember-me-parameter="remember-me"
-            data-source-ref="dataSource" />
+        <csrf disabled="true"/>
     </http>
 
     <b:bean id="emDaoAuthenticationProvider"
