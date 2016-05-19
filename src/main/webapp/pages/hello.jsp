@@ -5,7 +5,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Mountain Market</title>
-    <%@include file="partials/head.jsp" %>
 </head>
 <body ng-controller="MainCtrl">
     <div id="page" class="no-display">

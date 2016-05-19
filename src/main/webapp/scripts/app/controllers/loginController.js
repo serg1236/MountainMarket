@@ -2,7 +2,7 @@ define(['./module'], function (controllers) {
     'use strict';
     controllers.controller('LoginCtrl', ['$scope', '$timeout', '$http', 'fb', 'imageService', function ($scope, $timeout, $http, fb, imageService) {
         $scope.checkSuccess = false;
-        $scope.submit = function ($event) {
+        $scope.loginSubmit = function ($event) {
             if (!$scope.checkSuccess) {
                 $http({
                     url: '/login-check',
@@ -20,7 +20,7 @@ define(['./module'], function (controllers) {
             }
         };
 
-        $scope.change = function () {
+        $scope.loginChanged = function () {
             $scope.loginError = false;
         };
 	}]);

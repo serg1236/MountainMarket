@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,14 +27,12 @@ public class MainController {
     private UserRepository userRepository;
 
     @RequestMapping("/")
-    ModelAndView hello(HttpServletRequest request) {
+    ModelAndView hello(HttpServletRequest request, @RequestParam(required = false) String message) {
         request.getLocale().getLanguage();
         ModelAndView mv = new ModelAndView("hello");
-/*        User user = new User();
-        user.setLogin("admin");
-        user.setPassword("1111");
-        userRepository.save(user);*/
-        mv.addObject("message", "hello world!");
+        if(message != null && !message.isEmpty()) {
+            mv.addObject("message", message);
+        }
         return mv;
     }
     @RequestMapping("/tour")

@@ -76,3 +76,22 @@ main {
 .modal .modal-footer {
     padding: 0px 20px 0px 20px;
 }
+
+.register-link {
+    text-decoration: underline;
+    margin: 10px 0px 0px 40px;
+    position: relative;
+    display: block;
+}
+
+.input-field .prefix.active {
+    color: #7cb342 !important;
+}
+
+.register-error-message,.register-submit {
+    display: inline-flex;
+}
+
+.register-error-message {
+    margin-left: 10px;
+}

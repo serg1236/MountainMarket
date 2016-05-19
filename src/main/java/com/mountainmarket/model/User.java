@@ -13,11 +13,14 @@ import java.util.List;
 @Table(name = "customer")
 @Data
 @NoArgsConstructor
+@NamedQuery(name="User.findByLoginOrEmail", query="select u from User u where u.login=:login or u.email=:email")
 public class User {
     @GeneratedValue
     @Id
     private int id;
+    @Column(unique = true, nullable = false)
     private String login;
+    @Column(unique = true, nullable = false)
     private String email;
     private String password;
     @ManyToMany(mappedBy = "participants")
