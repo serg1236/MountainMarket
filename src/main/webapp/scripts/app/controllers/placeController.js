@@ -1,12 +1,6 @@
 define(['./module'],function(controllers){
 	'use strict';
-	controllers.controller('HomeCtrl', ['$scope','$timeout','$http','fb','imageService', function($scope, $timeout, $http, fb, imageService){
-		
-		$scope.user = $scope.$parent.currentUser;
-		$scope.$on('UserInit', function(){
-			$scope.user = $scope.$parent.currentUser;
-			console.log($scope.user);
-    	});
+	controllers.controller('PlaceCtrl', ['$scope','$timeout','$http','fb','imageService', function($scope, $timeout, $http, fb, imageService) {
 
 		$scope.uploadProgress = false;
 		

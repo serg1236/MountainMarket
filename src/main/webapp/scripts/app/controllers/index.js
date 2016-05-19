@@ -1,5 +1,6 @@
 define([
     './mainController',
     './loginController',
-    './registerController'
+    './registerController',
+    './placeController'
 ], function () {});
