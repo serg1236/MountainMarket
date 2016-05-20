@@ -1,26 +1,37 @@
 define(['./module'],function(controllers){
-	'use strict';
-	controllers.controller('PlaceCtrl', ['$scope','$timeout','$http','fb','imageService', function($scope, $timeout, $http, fb, imageService) {
+    'use strict';
+    controllers.controller('PlaceCtrl', ['$scope','$timeout','$http','fb','imageService','Upload', function($scope, $timeout, $http, fb, imageService, Upload) {
 
-		$scope.uploadProgress = false;
-		
-		$scope.uploadImage = function(image){
-			if (image && !image.$error){
-				imageService.addImage(image,$scope.user)
-	              .progress(function(){
-	                	$scope.uploadProgress = true;
-	                })
-	              .success(function(data){
-	            	  console.log(data);
-	            	  $scope.user = data;
-	            	  $scope.uploadProgress = false;
-	              })
-	              .error(function(){
-	            	  $scope.uploadProgress = false;
-	            	  Materialize.toast("Sorry, something wrong:(", 2000);
-	              });
-			}
-		};
+    initMap();
 
-	}]);
+    function initMap() {
+        var myLatlng = {lat: 48.3959259, lng: 23.9243141};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 9,
+            center: myLatlng
+        });
+
+        var marker;
+
+        function placeMarker(location) {
+            if ( marker ) {
+                marker.setPosition(location);
+            } else {
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+            }
+        }
+
+        google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(event.latLng);
+            $scope.lat = event.latLng.lat();
+            $scope.lng = event.latLng.lng();
+            $scope.$apply();
+        });
+      }
+
+    }]);
 });

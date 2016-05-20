@@ -17,10 +17,10 @@
       http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/**" access="permitAll" />
         <intercept-url pattern="/register/**" access="isAnonymous()"/>
-        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <!--<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>-->
         <intercept-url pattern="/user*" access="hasAnyRole('ROLE_ADMIN','ROLE_REGISTERED_USER')"/>
+        <intercept-url pattern="/**" access="permitAll" />
         <access-denied-handler error-page="/accessDenied" />
         <form-login
             login-page="/"

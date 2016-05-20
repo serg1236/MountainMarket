@@ -7,7 +7,7 @@ require.config({
 		angularCookies: './vendor/angular/angular-cookies',
 		angularRoute: './vendor/angular/angular-route.min',
 		domReady: './vendor/requirejs/domReady',
-		fileUpload: './vendor/ng-file-upload/ng-file-upload.min'
+		fileUpload: './vendor/ng-file-upload/ng-file-upload'
 	}, 
 	shim:{
 		
