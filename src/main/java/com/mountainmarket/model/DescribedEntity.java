@@ -3,6 +3,8 @@ package com.mountainmarket.model;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.net.ssl.SSLEngineResult;
 import javax.persistence.*;
@@ -28,11 +30,13 @@ public class DescribedEntity {
     @MapKeyColumn(name="language")
     @Column(name="name")
     @CollectionTable(name="de_names", joinColumns=@JoinColumn(name="de_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Map<String,String> names;
     @ElementCollection
     @MapKeyColumn(name="language")
-    @Column(name="info")
+    @Column(name="info", columnDefinition = "varchar(3000)")
     @CollectionTable(name="de_infos", joinColumns=@JoinColumn(name="de_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Map<String, String> infos;
     private boolean isActive;
 }

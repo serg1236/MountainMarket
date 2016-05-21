@@ -17,6 +17,7 @@
         <property name="locations">
             <list>
                 <value>${dbConfig}</value>
+                <value>classpath:cloudinary.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="false" />
@@ -55,5 +56,20 @@
      </bean>
 
     <jpa:repositories base-package="com.mountainmarket.repository"/>
+
+    <bean class="com.mountainmarket.util.CloudManager">
+        <constructor-arg>
+            <map>
+                <entry key="cloud_name" value="${cloudinary.cloud_name}"/>
+                <entry key="api_key" value="${cloudinary.api_key}"/>
+                <entry key="api_secret" value="${cloudinary.api_secret}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+<!--        <property name="maxUploadSize" value="1000000"/>
+        <property name="maxInMemorySize" value="500000"/>-->
+    </bean>
 
 </beans>

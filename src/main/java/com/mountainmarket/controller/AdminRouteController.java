@@ -4,7 +4,6 @@ import com.mountainmarket.model.Place;
 import com.mountainmarket.repository.PlaceRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,16 +17,16 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Sergiy_Dakhniy
  */
 @Controller
-@RequestMapping("/admin/place")
+@RequestMapping("/admin/route")
 @Data
-public class AdminPlaceController {
+public class AdminRouteController {
 
     @Autowired
     private PlaceRepository placeRepository;
 
     @RequestMapping(value = "/create", method= RequestMethod.GET)
     public ModelAndView showPage(@RequestParam(value = "message", required = false) String message) {
-        ModelAndView mv = new ModelAndView("create-place");
+        ModelAndView mv = new ModelAndView("create-route");
         if(message != null && !message.isEmpty()) {
             mv.addObject("message", message);
         }

@@ -76,13 +76,13 @@ public class AuthController {
 
     @PostConstruct
     public void initAdmin() {
-        User user = new User();
+        /*User user = new User();
         user.setPassword(encoder.encode("1111"));
         user.setLogin("admin");
         user.setRole("ROLE_ADMIN");
         user.setEmail("admin@gmail.com");
         user.setStatus(UserStatus.ACTIVE);
-        userRepository.save(user);
+        userRepository.save(user);*/
     }
 
 

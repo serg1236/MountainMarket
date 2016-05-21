@@ -3,10 +3,7 @@ package com.mountainmarket.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 /**
  * Created by Serg on 5/10/2016.
@@ -15,8 +12,12 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @Data
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name="ID")
+@Table(
+    uniqueConstraints=
+    @UniqueConstraint(columnNames={"lng", "lat"})
+)
 public class Place extends DescribedEntity {
-    private String lan;
+    private String lng;
     private String lat;
     private String imgUrl;
 }

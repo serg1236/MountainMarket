@@ -19,9 +19,11 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.DispatcherType;
+import javax.servlet.MultipartConfigElement;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -142,6 +144,7 @@ public class EmbeddedJetty {
         context.addServlet(new ServletHolder(new DispatcherServlet(springContext)), "/");
         context.addEventListener(new ContextLoaderListener(springContext));
         context.addServlet(jspServletHolder(), "*.jsp");
+        context.addFilter(new FilterHolder(new MultipartFilter()), "/*", EnumSet.allOf(DispatcherType.class));
         context.addFilter(new FilterHolder(new DelegatingFilterProxy("springSecurityFilterChain")), "/*", EnumSet.allOf(DispatcherType.class));
         return context;
     }

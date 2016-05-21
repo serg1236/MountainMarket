@@ -2,5 +2,7 @@ define([
     './mainController',
     './loginController',
     './registerController',
-    './placeController'
+    './placeController',
+    './showPlaceController',
+    './routeController'
 ], function () {});
