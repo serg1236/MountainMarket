@@ -6,6 +6,10 @@ define(['./module'],function(controllers){
         $("#preloader").addClass("no-display");
         $(".button-collapse").sideNav();
         $('.modal-trigger').leanModal();
+        $('.datepicker').pickadate({
+            selectMonths: true,
+            selectYears: 15
+        });
 		
 		$scope.loginToFb = function(){
 			var loginPromise = fb.login();

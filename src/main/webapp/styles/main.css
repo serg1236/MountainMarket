@@ -95,3 +95,8 @@ main {
 .register-error-message {
     margin-left: 10px;
 }
+
+.admin-nav {
+    max-height: 40px;
+    line-height: 40px;
+}

@@ -5,5 +5,6 @@ define([
     './placeController',
     './showPlaceController',
     './routeController',
+    './tourController',
     './showRouteController'
 ], function () {});
