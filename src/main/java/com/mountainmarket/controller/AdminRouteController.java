@@ -1,7 +1,9 @@
 package com.mountainmarket.controller;
 
 import com.mountainmarket.model.Place;
+import com.mountainmarket.model.Route;
 import com.mountainmarket.repository.PlaceRepository;
+import com.mountainmarket.repository.RouteRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.UUID;
+
 /**
  * Created by Sergiy_Dakhniy
  */
@@ -22,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminRouteController {
 
     @Autowired
-    private PlaceRepository placeRepository;
+    private RouteRepository routeRepository;
 
     @RequestMapping(value = "/create", method= RequestMethod.GET)
     public ModelAndView showPage(@RequestParam(value = "message", required = false) String message) {
@@ -33,14 +37,13 @@ public class AdminRouteController {
         return mv;
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.POST)
-    public ResponseEntity<String> create(@RequestBody Place place) {
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ResponseEntity<String> create(@RequestBody Route route) {
         try {
-            placeRepository.save(place);
-            return ResponseEntity.ok().body("/place/"+place.getLat()+"/"+place.getLng());
+            route = routeRepository.save(route);
+            return ResponseEntity.ok().body("/route/"+route.getId());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot save place. Try again later");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot save route. Try again later");
         }
-
     }
 }

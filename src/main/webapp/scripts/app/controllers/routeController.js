@@ -60,8 +60,8 @@ define(['./module'],function(controllers){
 
     $scope.data.chosenPlaces = [];
 
-    $scope.choosePlace = function($index) {
-        $scope.data.chosenPlaces.push($scope.places[$index]);
+    $scope.choosePlace = function(item) {
+        $scope.data.chosenPlaces.push(item);
         if($scope.data.chosenPlaces.length > 1) {
             calculateAndDisplayRoute($scope.data.chosenPlaces);
         }
@@ -119,6 +119,23 @@ define(['./module'],function(controllers){
             markers[i].setMap(null);
         }
         markers = [];
+    }
+
+    $scope.saveRoute = function($event) {
+        $scope.data.complexity = $('#complexity-select').val();
+        $scope.data.places = $scope.data.chosenPlaces;
+        $http({
+            url: '/admin/route/create',
+            method: 'POST',
+            data: $scope.data,
+            transformResponse: undefined
+        }).success(function(data) {
+            window.location.pathname = data;
+        }).error(function(data) {
+            $scope.routeError = data;
+            $('#upload-error').openModal();
+            console.log("ERROR");
+        });
     }
 
     }]);

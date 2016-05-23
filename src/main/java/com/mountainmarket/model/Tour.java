@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name="ID")
 public class Tour extends DescribedEntity {
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Route route;
     private LocalDate startDate;
     private LocalDate endDate;

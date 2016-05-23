@@ -3,6 +3,7 @@ package com.mountainmarket.controller;
 import com.mountainmarket.exception.ResourceNotFoundException;
 import com.mountainmarket.model.Place;
 import com.mountainmarket.repository.PlaceRepository;
+import com.mountainmarket.repository.RouteRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class PlaceController {
     @Autowired
     PlaceRepository placeRepository;
 
+    @Autowired
+    RouteRepository routeRepository;
+
     @RequestMapping("/{lat}/{lng:.+}")
     public ModelAndView getPlace(@PathVariable("lat") String lat, @PathVariable("lng") String lng) {
         ModelAndView mv = new ModelAndView("show-place");
@@ -41,5 +45,11 @@ public class PlaceController {
     @ResponseBody
     public List<Place> getAll() {
         return placeRepository.findAll();
+    }
+
+    @RequestMapping("/all/{id}")
+    @ResponseBody
+    public List<Place> getAllForRoute(@PathVariable("id") int id) {
+        return routeRepository.findOne(id).getPlaces();
     }
 }

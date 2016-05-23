@@ -18,7 +18,7 @@
                 <div class="col l3 m4 s12">
                     <h5>Available places:</h5>
                     <div class="available-places collection">
-                        <a href="#!" class="collection-item light-green-text text-darken-3" ng-repeat="place in places | orderBy: 'names.EN' track by $index " ng-click="choosePlace($index)">{{place.names.EN}}</a>
+                        <a href="#!" class="collection-item light-green-text text-darken-3" ng-repeat="place in places | orderBy: 'names.EN' track by $index " ng-click="choosePlace(place)">{{place.names.EN}}</a>
                     </div>
                     <h5 ng-show="data.chosenPlaces.length > 0">Route:</h5>
                     <ul class="places collection" ng-show="data.chosenPlaces.length > 0">
@@ -35,12 +35,12 @@
                 <form ng-submit="saveRoute($event)">
                     <div class="col l3 m4 s12">
                         <div class="input-field">
-                            <input id="name" name="name" type="text" ng-model="data.names.EN" ng-change="placeChanged()"
+                            <input id="name" name="name" type="text" ng-model="data.names.EN"
                                 oninvalid="setCustomValidity('Please, enter name')" onchange="try{setCustomValidity('')}catch(e){}"  required="true">
                             <label for="name">Name</label>
                         </div>
                         <div class="input-field">
-                            <select name="data.complexity" id="complexity-select" required="true">
+                            <select name="complexity" id="complexity-select" required="true" ng-model="data.complexity">
                                 <option value="" disabled selected>Choose route complexity</option>
                                 <option value="LOW">Low</option>
                                 <option value="AVERAGE">Average</option>
@@ -49,14 +49,22 @@
                             </select>
                         </div>
                         <div class="input-field">
-                            <textarea name="description" id="description" class="materialize-textarea" ng-model="data.infos.EN" ng-change="placeChanged()"
+                            <textarea name="description" id="description" class="materialize-textarea" ng-model="data.infos.EN"
                                 oninvalid="setCustomValidity('Please, enter description')" onchange="try{setCustomValidity('')}catch(e){}"  required="true"></textarea>
                             <label for="description">Description</label>
                         </div>
-                        <button class="register-submit btn waves-effect waves-light light-green darken-1" type="submit">Create place
+                        <button class="register-submit btn waves-effect waves-light light-green darken-1" type="submit">Create route
                         </button>
                     </div>
                 </form>
+            </div>
+            <div id="upload-error" class="modal">
+                <div class="modal-content">
+                    <h5>{{routeError}}</h5>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>
+                </div>
             </div>
         </main>
         <%@include file="partials/footer.jsp" %>

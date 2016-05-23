@@ -4,6 +4,8 @@ import com.mountainmarket.model.Route;
 import com.mountainmarket.model.Tour;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.UUID;
+
 /**
  * Created by Serg on 5/11/2016.
  */

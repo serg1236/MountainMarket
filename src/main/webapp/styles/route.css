@@ -7,3 +7,26 @@
     width: 100%;
     height: 400px;
 }
+
+.card-image {
+    height: 150px !important;
+}
+
+.card-image img {
+    min-height: 100% !important;
+    width: initial !important;
+    min-width: 100% !important;
+    max-height: 100% !important;
+}
+
+.LOW {
+    color: green;
+}
+
+.AVERAGE {
+    color: blue;
+}
+
+.HIGH {
+    color: red;
+}

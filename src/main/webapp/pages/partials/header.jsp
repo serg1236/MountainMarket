@@ -43,6 +43,7 @@
                 </ul>
             </div>
         </nav>
+        <%@include file="admin-header.jsp" %>
     </header>
     <%@include file="login-form.jsp" %>
     <c:if test="${not empty message}" >
