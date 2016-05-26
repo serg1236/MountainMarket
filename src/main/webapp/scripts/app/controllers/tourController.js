@@ -6,19 +6,30 @@ define(['./module'],function(controllers){
     $scope.data.chosenPlaces = [];
 
 
+    $http({
+        url: '/route/all',
+        method: 'GET'
+    }).success(function(data) {
+        $scope.routes = data;
+        $timeout(function() { $("#route-select").material_select(); }, 0, false);
+    });
+
+
     $scope.saveTour = function($event) {
-        $scope.data.complexity = $('#complexity-select').val();
-        $scope.data.places = $scope.data.chosenPlaces;
         $http({
-            url: '/admin/route/create',
+            url: '/admin/tour/create',
             method: 'POST',
             data: $scope.data,
             transformResponse: undefined
         }).success(function(data) {
             window.location.pathname = data;
         }).error(function(data) {
-            $scope.routeError = data;
-            $('#upload-error').openModal();
+            if(data) {
+                $scope.uploadError = data;
+            }
+            else {
+                $scope.uploadError = "Unknown error";
+            }
             console.log("ERROR");
         });
     }

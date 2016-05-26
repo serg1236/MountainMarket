@@ -6,7 +6,7 @@
 </head>
 <body>
     <div id="tour-form" class="modal">
-        <form ng-controller="TourCtrl" method="POST" ng-submit="createTour($event)">
+        <form ng-controller="TourCtrl" method="POST" ng-submit="saveTour($event)">
             <div class="modal-content">
                 <h3>Create tour</h3>
                 <div class="input-field">
@@ -24,6 +24,11 @@
                     </div>
                 </div>
                 <div class="input-field">
+                    <select name="route" id="route-select" required="true" ng-model="data.route"
+                    ng-options="option.names.EN for option in routes track by route.id" ng-model="data.route" required="true">
+                    </select>
+                </div>
+                <div class="input-field">
                     <textarea name="description" id="description" class="materialize-textarea" ng-model="data.infos.EN"
                         oninvalid="setCustomValidity('Please, enter description')" onchange="try{setCustomValidity('')}catch(e){}"  required="true"></textarea>
                     <label for="description">Description</label>
@@ -33,6 +38,7 @@
                 <button class="btn waves-effect waves-light login" type="submit">Create tour
                 </button>
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                <p class="red-text">{{uploadError}}</p>
             </div>
         </form>
     </div>
