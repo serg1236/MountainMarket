@@ -37,6 +37,9 @@ public class AdminPlaceController {
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public ResponseEntity<String> create(@RequestBody Place place) {
         try {
+            if(place.getLat() == null || place.getLng() == null) {
+                throw new RuntimeException("empty coordinates");
+            }
             placeRepository.save(place);
             return ResponseEntity.ok().body("/place/"+place.getLat()+"/"+place.getLng());
         } catch (Exception e) {

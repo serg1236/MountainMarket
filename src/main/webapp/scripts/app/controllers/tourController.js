@@ -3,7 +3,6 @@ define(['./module'],function(controllers){
     controllers.controller('TourCtrl', ['$scope','$timeout','$http','fb','imageService','Upload', function($scope, $timeout, $http, fb, imageService, Upload) {
 
     $scope.data = {};
-    $scope.data.chosenPlaces = [];
 
 
     $http({
@@ -22,7 +21,7 @@ define(['./module'],function(controllers){
             data: $scope.data,
             transformResponse: undefined
         }).success(function(data) {
-            window.location.pathname = data;
+            $('#tour-form').closeModal();
         }).error(function(data) {
             if(data) {
                 $scope.uploadError = data;

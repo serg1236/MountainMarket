@@ -7,7 +7,8 @@ require.config({
 		angularCookies: './vendor/angular/angular-cookies',
 		angularRoute: './vendor/angular/angular-route.min',
 		domReady: './vendor/requirejs/domReady',
-		fileUpload: './vendor/ng-file-upload/ng-file-upload'
+		fileUpload: './vendor/ng-file-upload/ng-file-upload',
+		ngMaterial: './vendor/ng-material/ng-material'
 	}, 
 	shim:{
 		
@@ -25,6 +26,10 @@ require.config({
 		
 		fileUpload:{
 			deps: ['angular']
+		},
+
+		ngMaterial: {
+		    deps: ['angular']
 		}
 
 		

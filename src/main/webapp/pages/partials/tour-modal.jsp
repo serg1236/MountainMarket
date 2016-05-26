@@ -15,12 +15,22 @@
                 </div>
                 <div class="date-range row">
                     <div class="input-field col s6">
-                        <input id="startDate" type="date" name="startDate" class="datepicker" ng-model="data.startDate" required="true">
+                        <input id="startDate" input-date name="startDate" format="yyyy-mm-dd" ng-model="data.startDate" required="true">
                         <label for="startDate">Start date</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="endDate" type="date" name="endDate" class="datepicker" ng-model="data.endDate" required="true">
+                        <input id="endDate" input-date format="yyyy-mm-dd" name="endDate" ng-model="data.endDate" required="true">
                         <label for="endDate">End date</label>
+                    </div>
+                </div>
+                <div class="date-range row">
+                    <div class="input-field col s6">
+                        <input id="price" type="number" name="price" min="1" ng-model="data.price" required="true">
+                        <label for="price">Price</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="capacity" type="number" min="1" max="100" name="capacity" ng-model="data.capacity" required="true">
+                        <label for="capacity">Capacity</label>
                     </div>
                 </div>
                 <div class="input-field">

@@ -2,6 +2,7 @@ package com.mountainmarket.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,7 +18,9 @@ import java.util.List;
 public class Tour extends DescribedEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Route route;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
     private double price;
     private int capacity;
