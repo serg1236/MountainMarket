@@ -52,4 +52,12 @@ public class PlaceController {
     public List<Place> getAllForRoute(@PathVariable("id") int id) {
         return routeRepository.findOne(id).getPlaces();
     }
+
+    @RequestMapping("/all")
+    public ModelAndView getPlaces() {
+        ModelAndView mv = new ModelAndView("all-places");
+        List<Place> places = placeRepository.findAll();
+        mv.addObject("places", places);
+        return mv;
+    }
 }

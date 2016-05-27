@@ -19,9 +19,9 @@
                 </a>
                 <a href="#" data-activates="main-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down header-menu">
-                    <li ><a class="btn-flat white-text">Tours</a></li>
+                    <li ><a href="/tour/all" class="btn-flat white-text">Tours</a></li>
                     <li ><a class="btn-flat white-text">Routes</a></li>
-                    <li ><a class="btn-flat white-text">Places</a></li>
+                    <li ><a href="/place/all" class="btn-flat white-text">Places</a></li>
                     <sec:authorize access="isAnonymous()">
                         <a href="#login-form" class="btn-flat white-text light-green darken-1 modal-trigger">Login</a>
                     </sec:authorize>
@@ -37,9 +37,9 @@
                 </ul>
                 <a href="#login-form" class="login-icon hide-on-large-only right modal-trigger"><i class="material-icons">perm_identity</i></a>
                 <ul class="side-nav" id="main-sidenav">
-                    <li ><a class="btn-flat">Tours</a></li>
+                    <li ><a href="/tour/all" class="btn-flat">Tours</a></li>
                     <li ><a class="btn-flat">Routes</a></li>
-                    <li ><a class="btn-flat">Places</a></li>
+                    <li ><a href="/place/all" class="btn-flat">Places</a></li>
                 </ul>
             </div>
         </nav>

@@ -12,6 +12,10 @@
     height: 150px !important;
 }
 
+.card-image.large-card {
+    height: 200px !important;
+}
+
 .card-image img {
     min-height: 100% !important;
     width: initial !important;

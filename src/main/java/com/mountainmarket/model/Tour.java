@@ -2,6 +2,8 @@ package com.mountainmarket.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,13 +20,12 @@ import java.util.List;
 public class Tour extends DescribedEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Route route;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
     private double price;
     private int capacity;
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> participants;
     @ManyToOne
     private User guide;

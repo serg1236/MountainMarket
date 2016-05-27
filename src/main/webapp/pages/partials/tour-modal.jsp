@@ -15,11 +15,11 @@
                 </div>
                 <div class="date-range row">
                     <div class="input-field col s6">
-                        <input id="startDate" input-date name="startDate" format="yyyy-mm-dd" ng-model="data.startDate" required="true">
+                        <input id="startDate" type="text" input-date name="startDate" format="yyyy-mm-dd" ng-model="data.startDate" required="true">
                         <label for="startDate">Start date</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="endDate" input-date format="yyyy-mm-dd" name="endDate" ng-model="data.endDate" required="true">
+                        <input id="endDate" type="text" input-date format="yyyy-mm-dd" name="endDate" ng-model="data.endDate" required="true">
                         <label for="endDate">End date</label>
                     </div>
                 </div>

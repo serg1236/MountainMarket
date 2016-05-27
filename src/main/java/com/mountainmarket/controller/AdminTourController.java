@@ -24,7 +24,6 @@ public class AdminTourController {
     TourRepository tourRepository;
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    @ResponseBody
     ResponseEntity<String> create(@RequestBody Tour tour) {
         try {
             tourRepository.save(tour);
