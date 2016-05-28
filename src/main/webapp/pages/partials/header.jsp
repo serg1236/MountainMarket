@@ -12,7 +12,7 @@
         </div>
         <nav class="light-green darken-3" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="#/" class="brand-logo">
+                <a id="logo-container" href="/" class="brand-logo">
                 <i class="material-icons white-text">location_on</i>
                 <i class="material-icons white-text">shopping_cart</i>
                     Mountain Market

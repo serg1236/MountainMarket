@@ -11,4 +11,5 @@ import java.util.List;
  * Created by Serg on 5/11/2016.
  */
 public interface RequestRepository extends CrudRepository<Request,Integer> {
+    List<Request> findAll();
 }

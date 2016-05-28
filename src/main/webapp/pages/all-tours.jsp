@@ -50,10 +50,16 @@
                             <input type="checkbox" id="free" ng-model="free"/>
                             <label for="free">Free places available</label>
                         </p>
+                        <sec:authorize access="isAuthenticated()">
+                            <p>
+                                <input type="checkbox" id="cart" ng-model="cart"/>
+                                <label for="cart"><i class="tiny material-icons">shopping_cart</i> Booked by me</label>
+                            </p>
+                        </sec:authorize>
                     </form>
                 </div>
                 <div class="col l9 m8 s12">
-                    <div class="card light-green darken-3" ng-repeat="tour in tours | orderBy: orderCondition:orderDesc | filter:search | priceFilter:priceRange track by $index " >
+                    <div class="card light-green darken-3" ng-repeat="tour in tours | orderBy: orderCondition:orderDesc | filter:search | priceFilter:priceRange | actualFilter:actual | freeFilter:free |cartFilter:cart:currentUser track by $index " >
                         <div class="card-content white-text row">
                             <div class="col l4 m4 hide-on-small-and-down">
                                 <img ng-if="tour.route.places[0].imgUrl" class="tour-image" ng-src="{{tour.route.places[0].imgUrl}}"/>
@@ -68,13 +74,26 @@
                         </div>
                         <div class="card-action">
                             <a href="/route/{{tour.route.id}}" class="secondary-content"><i class="tiny material-icons">location_on</i>Show route</a>
-                            <a href="#" class="secondary-content white-text" ng-if="!tour.participants||tour.capacity>tour.participants.length">
-                                <i class="tiny material-icons">shopping_cart</i>
-                            Add to cart</a>
+                            <sec:authorize access="isAuthenticated()">
+                                <a href="#" class="secondary-content white-text" ng-click="addToCart(tour)" ng-if="(!checkInCart(tour)) && (!tour.participants||tour.capacity>tour.participants.length)">
+                                    <i class="tiny material-icons">shopping_cart</i>
+                                Book place</a>
+                                <a href="#" ng-if="checkInCart(tour)" class="secondary-content white-text" ng-click="removeFromCart(tour)">
+                                    <i class="tiny material-icons">delete</i>
+                                Cancel booking</a>
+                            </sec:authorize>
+                            <a href="#" class="secondary-content white-text" ng-click="feedbackModal(tour)"><i class="tiny material-icons">thumbs_up_down</i> Feedback</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <sec:authorize access="isAuthenticated()">
+            <div class="fixed-action-btn">
+                <a href="#request-form" class="btn-floating btn-large waves-effect waves-light red modal-trigger"><i class="material-icons">mode_edit</i></a>
+            </div>
+            </sec:authorize>
+            <%@include file="partials/request-modal.jsp" %>
+            <%@include file="partials/feedback-modal.jsp" %>
         </main>
         <%@include file="partials/footer.jsp" %>
     </div>

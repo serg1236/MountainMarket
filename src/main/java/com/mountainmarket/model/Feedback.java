@@ -16,7 +16,7 @@ public class Feedback {
     @GeneratedValue
     @Id
     private int id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     User author;
     String text;
     int rating;

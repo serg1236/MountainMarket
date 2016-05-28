@@ -100,3 +100,10 @@ main {
     max-height: 40px;
     line-height: 40px;
 }
+
+.request-chip i {
+    line-height: 40px !important;
+}
+.request-chip {
+    display: inline-flex;
+}

@@ -10,6 +10,13 @@ define(['./module'],function(controllers){
             selectMonths: true,
             selectYears: 15
         });
+
+        $http({
+            url: '/request/',
+            method: 'GET'
+        }).success(function(data) {
+            $scope.requestCount = data.length;
+        });
 		
 		$scope.loginToFb = function(){
 			var loginPromise = fb.login();

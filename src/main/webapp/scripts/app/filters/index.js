@@ -1,3 +1,6 @@
 define([
-    './priceFilter'
+    './priceFilter',
+    './actualFilter',
+    './freeFilter',
+    './cartFilter'
 ], function () {});

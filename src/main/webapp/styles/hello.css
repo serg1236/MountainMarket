@@ -1,0 +1,14 @@
+#page {
+    background-image: url("http://res.cloudinary.com/imagine/image/upload/v1464440043/landscape-mountains-nature-lake_zq1yb6.jpg");
+    background-size: cover;
+}
+
+.hello {
+    text-align: center;
+    margin-top: 100px;
+
+}
+
+.hello h3, .hello h1 {
+    text-shadow: 1px 1px #000000;
+}

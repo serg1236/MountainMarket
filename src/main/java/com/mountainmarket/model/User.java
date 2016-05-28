@@ -23,8 +23,6 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
     private String password;
-    @ManyToMany(mappedBy = "participants")
-    private List<Tour> tours;
     private String role;
     @Enumerated(EnumType.STRING)
     private UserStatus status;

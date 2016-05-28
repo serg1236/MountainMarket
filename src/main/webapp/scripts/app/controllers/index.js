@@ -7,5 +7,6 @@ define([
     './routeController',
     './tourController',
     './showRouteController',
-    './tourListController'
+    './tourListController',
+    './requestListController'
 ], function () {});

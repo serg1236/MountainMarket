@@ -17,8 +17,6 @@ public class Request {
     @GeneratedValue
     @Id
     private int id;
-    @ManyToMany
-    List<Place> places;
     LocalDate startDate;
     LocalDate endDate;
     @ManyToOne

@@ -6,8 +6,12 @@ import com.mountainmarket.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,6 +39,17 @@ public class MainController {
         }
         return mv;
     }
+
+    @RequestMapping(value = "/current-user", method = RequestMethod.GET)
+    @ResponseBody
+    private User currentUser() {
+        try {
+            return getCurrentUser();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     @RequestMapping("/tour")
     @ResponseBody
     Tour getTour(){
@@ -43,6 +58,12 @@ public class MainController {
         tour.setPrice(3000);
         tour.setStartDate(LocalDate.parse("5.12.2016", DateTimeFormatter.ofPattern("d.M.uuuu")));
         return tour;
+    }
+
+    private User getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetail = (UserDetails) auth.getPrincipal();
+        return userRepository.findByLogin(userDetail.getUsername());
     }
 
 }

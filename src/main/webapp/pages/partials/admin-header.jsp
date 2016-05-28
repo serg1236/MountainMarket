@@ -11,6 +11,7 @@
                 <li ><a href="#tour-form" class="btn-flat white-text modal-trigger">Create tour</a></li>
                 <li ><a href="/admin/route/create" class="btn-flat white-text">Create route</a></li>
                 <li ><a href="/admin/place/create" class="btn-flat white-text">Create place</a></li>
+                <li ><a href="/admin/requests" class="white-text request-chip btn-flat"><i class="material-icons small">email</i><span class="white-text">{{requestCount}}</span></a></li>
             </ul>
         </div>
     </nav>

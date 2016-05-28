@@ -5,12 +5,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Mountain Market</title>
+    <link rel="stylesheet" href="/styles/hello.css"/>
 </head>
 <body ng-controller="MainCtrl">
     <div id="page" class="no-display">
         <%@include file="partials/header.jsp" %>
         <main class="container">
-            <h1>${message}</h1>
+            <div class="hello white-text">
+                <h1>Welcome to Mountain Market!</h1>
+                <h3>We will help you to find the best trip</h3>
+                <a  href="/tour/all" class="waves-effect waves-light btn-large white-text green darken-2">Start my journey</a>
+            </div>
         </main>
         <%@include file="partials/footer.jsp" %>
     </div>
