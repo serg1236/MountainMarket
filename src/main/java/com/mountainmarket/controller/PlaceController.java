@@ -56,7 +56,7 @@ public class PlaceController {
     @RequestMapping("/all")
     public ModelAndView getPlaces() {
         ModelAndView mv = new ModelAndView("all-places");
-        List<Place> places = placeRepository.findAll();
+        List<Place> places = placeRepository.findByIsActive(true);
         mv.addObject("places", places);
         return mv;
     }

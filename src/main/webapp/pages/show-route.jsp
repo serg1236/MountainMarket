@@ -12,7 +12,10 @@
         <%@include file="partials/header.jsp" %>
         <main class="container" ng-controller="ShowRouteCtrl">
             <div class="row">
-                <h3>${route.names.EN}</h3>
+            <h3>${route.names.EN}
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <a href="/admin/route/update/${route.id}" class="waves-effect waves-light btn green btn-floating secondary-content"><i class="material-icons left">mode_edit</i></a>
+                </sec:authorize></h3>
                 <div id="map" data-routeId="${route.id}" class="map"></div>
                 <div class="description">
                     <p>${route.infos.EN}</p>

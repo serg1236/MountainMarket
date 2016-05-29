@@ -17,6 +17,13 @@ define(['./module'],function(controllers){
         }).success(function(data) {
             $scope.requestCount = data.length;
         });
+
+        $http({
+            url: '/admin/route/all',
+            method: 'GET'
+        }).success(function(data) {
+            $scope.headerRoutes = data;
+        });
 		
 		$scope.loginToFb = function(){
 			var loginPromise = fb.login();

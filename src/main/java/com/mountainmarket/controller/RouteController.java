@@ -39,6 +39,12 @@ public class RouteController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public List<Route> getAll() {
-        return routeRepository.findAll();
+        return routeRepository.findByIsActive(true);
+    }
+
+    @RequestMapping(value = "/{id}.rest", method = RequestMethod.GET)
+    @ResponseBody
+    public Route getRest(@PathVariable("id") int id) {
+        return routeRepository.findOne(id);
     }
 }

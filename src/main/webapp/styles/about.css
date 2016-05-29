@@ -1,0 +1,11 @@
+.info {
+    margin-top:20px;
+}
+
+.about-img {
+    max-width: 100%;
+}
+
+.info .about-img {
+    margin-top: 40px;
+}

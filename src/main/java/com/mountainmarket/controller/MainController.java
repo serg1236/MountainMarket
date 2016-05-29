@@ -50,6 +50,12 @@ public class MainController {
         }
     }
 
+
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    private String about() {
+        return "about";
+    }
+
     @RequestMapping("/tour")
     @ResponseBody
     Tour getTour(){

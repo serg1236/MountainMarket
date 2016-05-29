@@ -12,4 +12,6 @@ import java.util.List;
 public interface PlaceRepository extends CrudRepository<Place,Integer> {
     Place findByLatAndLng(String lat, String lng);
     List<Place> findAll();
+
+    List<Place> findByIsActive(boolean b);
 }

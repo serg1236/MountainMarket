@@ -68,7 +68,13 @@
                             <div class="col l8 m8 s12">
                                 <span class="card-title">{{tour.names.EN}}<span class="secondary-content light-green-text text-lighten-2">{{tour.price}} UAH</span></span>
                                 <p class="yellow-text tour-metadata"><i class="tiny material-icons">today</i> {{tour.startDate.day}}.{{tour.startDate.month}}.{{tour.startDate.year}} - {{tour.endDate.day}}.{{tour.endDate.month}}.{{tour.endDate.year}}</p>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <a href="#!" ng-click="showParticipants(tour)">
+                                </sec:authorize>
                                 <p class="white-text tour-metadata"><i class="tiny material-icons">supervisor_account</i> {{tour.participants? tour.participants.length: 0}} / {{tour.capacity}}</p>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    </a>
+                                </sec:authorize>
                                 <p class="tour-description">{{tour.infos.EN}}</p>
                             </div>
                         </div>
@@ -94,6 +100,9 @@
             </sec:authorize>
             <%@include file="partials/request-modal.jsp" %>
             <%@include file="partials/feedback-modal.jsp" %>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <%@include file="partials/participants-modal.jsp" %>
+            </sec:authorize>
         </main>
         <%@include file="partials/footer.jsp" %>
     </div>

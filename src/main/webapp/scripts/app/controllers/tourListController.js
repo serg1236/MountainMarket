@@ -131,6 +131,11 @@ define(['./module'],function(controllers){
         });
     }
 
+    $scope.showParticipants = function(tour) {
+        $scope.tourForParticipants = tour;
+        $("#participants-modal").openModal();
+    }
+
     function convertDate(date) {
         var dateArr = date.split('-');
         var localDate = {};

@@ -40,11 +40,23 @@ public class AdminPlaceController {
             if(place.getLat() == null || place.getLng() == null) {
                 throw new RuntimeException("empty coordinates");
             }
+            place.setActive(true);
             placeRepository.save(place);
             return ResponseEntity.ok().body("/place/"+place.getLat()+"/"+place.getLng());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot save place. Try again later");
         }
 
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public ResponseEntity<String> remove(@RequestBody Place place) {
+        try {
+            place.setActive(false);
+            placeRepository.save(place);
+            return ResponseEntity.ok().body("/place/"+place.getLat()+"/"+place.getLng());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot remove place. Try again later");
+        }
     }
 }

@@ -26,6 +26,7 @@ public class AdminTourController {
     @RequestMapping(value = "create", method = RequestMethod.POST)
     ResponseEntity<String> create(@RequestBody Tour tour) {
         try {
+            tour.setActive(true);
             tourRepository.save(tour);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot save tour. Try again later");

@@ -12,4 +12,6 @@ import java.util.UUID;
  */
 public interface RouteRepository extends CrudRepository<Route,Integer> {
     List<Route> findAll();
+
+    List<Route> findByIsActive(boolean b);
 }
