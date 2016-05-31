@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 /**
  * Created by Sergiy_Dakhniy
  */
+//CrudRepository містить базові CRUD операції
 public interface UserRepository extends CrudRepository<User, Integer> {
     User findByLogin(String login);
     User findByLoginOrEmail(@Param("login") String login, @Param("email")String email);

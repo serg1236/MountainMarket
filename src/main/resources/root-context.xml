@@ -13,6 +13,7 @@
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 
+    <!--зчитування коонфігурації з .properties файлів-->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -23,7 +24,7 @@
         <property name="ignoreResourceNotFound" value="false" />
     </bean>
 
-
+    <!--Ініціалізація роботи ORM-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="persistenceProviderClass">
@@ -44,13 +45,14 @@
         </property>
     </bean>
 
+    <!--Підключення до бази даних-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
-
+    <!--Менеджер транзакцій-->
      <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
          <property name="entityManagerFactory" ref="entityManagerFactory"/>
      </bean>
@@ -68,8 +70,6 @@
     </bean>
 
     <bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-<!--        <property name="maxUploadSize" value="1000000"/>
-        <property name="maxInMemorySize" value="500000"/>-->
     </bean>
 
 </beans>

@@ -19,6 +19,7 @@ import java.util.UUID;
  * Created by Sergiy_Dakhniy
  */
 @Controller
+//єдина точка входу в контроллер
 @RequestMapping("/admin/route")
 @Data
 public class AdminRouteController {
@@ -57,6 +58,8 @@ public class AdminRouteController {
         }
     }
 
+    //обробка синхронного запиту
+    //повертає сторінку редагування маршруту із заданим id
     @RequestMapping(value = "/update/{id}", method= RequestMethod.GET)
     public ModelAndView showUpdatePage(@PathVariable("id") String id) {
         ModelAndView mv = new ModelAndView("update-route");
@@ -74,6 +77,8 @@ public class AdminRouteController {
         }
     }
 
+    //обробка асинхронного запиту
+    //повертає список маршрутів у json форматі
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public List<Route> getAll() {

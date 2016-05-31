@@ -263,7 +263,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.mountainmarket.server.EmbeddedJetty2</mainClass>
+                                    <mainClass>com.mountainmarket.server.EmbeddedJetty</mainClass>
                                 </transformer>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">

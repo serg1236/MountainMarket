@@ -42,7 +42,6 @@ import java.util.logging.Logger;
  */
 public class EmbeddedJetty {
 
-    // Resource path pointing to where the WEBROOT is
     private static final String WEBROOT_INDEX = "/webapp/";
     private static final String CONFIG_LOCATION = "com.mountainmarket.servlet";
     private static final String DEFAULT_PROFILE = "dev";
@@ -78,17 +77,14 @@ public class EmbeddedJetty {
 
         URI baseUri = getWebRootResourceUri();
 
-        // Set JSP to use Standard JavaC always
         System.setProperty("org.apache.jasper.compiler.disablejsr199", "false");
 
         WebAppContext webAppContext = getWebAppContext(baseUri, getScratchDir());
 
         server.setHandler(webAppContext);
 
-        // Start Server
         server.start();
 
-        // Show server state
         if (LOG.isLoggable(Level.FINE)) {
             LOG.fine(server.dump());
         }
@@ -106,13 +102,9 @@ public class EmbeddedJetty {
         if (indexUri == null) {
             throw new FileNotFoundException("Unable to find resource " + WEBROOT_INDEX);
         }
-        // Points to wherever /webroot/ (the resource) is
         return indexUri.toURI();
     }
 
-    /**
-     * Establish Scratch directory for the servlet context (used by JSP compilation)
-     */
     private File getScratchDir() throws IOException {
         File tempDir = new File(System.getProperty("java.io.tmpdir"));
         File scratchDir = new File(tempDir.toString(), "embedded-jetty-jsp");
@@ -125,10 +117,7 @@ public class EmbeddedJetty {
         return scratchDir;
     }
 
-    /**
-     * Setup the basic application "context" for this application at "/"
-     * This is also known as the handler tree (in jetty speak)
-     */
+
     private WebAppContext getWebAppContext(URI baseUri, File scratchDir) {
         WebApplicationContext springContext = getContext();
         WebAppContext context = new WebAppContext();
@@ -149,9 +138,6 @@ public class EmbeddedJetty {
         return context;
     }
 
-    /**
-     * Ensure the jsp engine is initialized correctly
-     */
     private List<ContainerInitializer> jspInitializers() {
         JettyJasperInitializer sci = new JettyJasperInitializer();
         ContainerInitializer initializer = new ContainerInitializer(sci, null);
@@ -160,20 +146,13 @@ public class EmbeddedJetty {
         return initializers;
     }
 
-    /**
-     * Set Classloader of Context to be sane (needed for JSTL)
-     * JSP requires a non-System classloader, this simply wraps the
-     * embedded System classloader in a way that makes it suitable
-     * for JSP to use
-     */
+
     private ClassLoader getUrlClassLoader() {
         ClassLoader jspClassLoader = new URLClassLoader(new URL[0], this.getClass().getClassLoader());
         return jspClassLoader;
     }
 
-    /**
-     * Create JSP Servlet (must be named "jsp")
-     */
+
     private ServletHolder jspServletHolder() {
         ServletHolder holderJsp = new ServletHolder("jsp", JettyJspServlet.class);
         holderJsp.setInitOrder(0);
@@ -194,9 +173,7 @@ public class EmbeddedJetty {
         return context;
     }
 
-    /**
-     * Establish the Server URI
-     */
+
     private URI getServerUri(ServerConnector connector) throws URISyntaxException {
         String scheme = "http";
         for (ConnectionFactory connectFactory : connector.getConnectionFactories()) {
@@ -218,13 +195,6 @@ public class EmbeddedJetty {
         server.stop();
     }
 
-    /**
-     * Cause server to keep running until it receives a Interrupt.
-     * <p>
-     * Interrupt Signal, or SIGINT (Unix Signal), is typically seen as a result of a kill -TERM {pid} or Ctrl+C
-     *
-     * @throws InterruptedException if interrupted
-     */
     public void waitForInterrupt() throws InterruptedException {
         server.join();
     }

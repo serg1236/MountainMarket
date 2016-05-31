@@ -9,5 +9,6 @@ define([
     './showRouteController',
     './tourListController',
     './requestListController',
-    './updateRouteController'
+    './updateRouteController',
+    './adminHeaderController'
 ], function () {});

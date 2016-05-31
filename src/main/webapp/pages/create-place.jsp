@@ -12,6 +12,7 @@
         <%@include file="partials/header.jsp" %>
         <main class="container">
             <div class="row" ng-controller="PlaceCtrl">
+                <!--оголошення колонки 50% на великому екрані 100% на малому-->
                 <div class="col s12 m6">
                     <h3>Add new place</h3>
                     <form id="place-form" method="post" ng-submit="submit($event)">
@@ -28,6 +29,7 @@
                             <label for="description">Description</label>
                         </div>
                         <div class="row">
+                            <!--оголошення колонки 50% на великому екрані 100% на малому-->
                             <div class="col s12 m6">
                                 <div class="file-field input-field image-select">
                                     <div class="btn light-green darken-1">
@@ -39,6 +41,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--оголошення колонки 50% на великому екрані 100% на малому-->
                             <div class="col s12 m6">
                                 <img ngf-thumbnail="picFile" class="thumb">
                                 <img ng-show="!picFile" class="thumb" src="/images/image-placeholder.png">
@@ -51,6 +54,7 @@
                         <input type="hidden" value="{{data.imgUrl}}" name="lng" required="true">
                     </form>
                 </div>
+                <!--оголошення колонки 50% на великому екрані 100% на малому-->
                 <div class="col s12 m6">
                     <div id="map" class="map"></div>
                     <p ng-hide="!lat"><span>{{lat}}</span> : <span>{{lng}}</span></p>

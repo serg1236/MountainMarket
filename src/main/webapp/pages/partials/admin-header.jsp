@@ -5,7 +5,7 @@
 <head>
 </head>
 <body>
-    <nav class="light-green darken-4 admin-nav" role="navigation">
+    <nav class="light-green darken-4 admin-nav" role="navigation" ng-controller="AdminHeaderCtrl">
         <div class="nav-wrapper container">
             <ul class="right header-menu">
                 <li ><a href="#tour-form" class="btn-flat white-text modal-trigger">Create tour</a></li>

@@ -24,6 +24,7 @@ public class Tour extends DescribedEntity {
     private LocalDate endDate;
     private double price;
     private int capacity;
+    //опис зв'язку багато-до-багатьох між турами та їх учасниками
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> participants;

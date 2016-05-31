@@ -15,15 +15,15 @@ public class CloudManager {
 
     private Cloudinary cloudinary;
     
-    
+    //завантаження зображення із заданою шириною
+    //повертає мапу параметрів зображення, серед яких пряма url
     public Map uploadImage(File image, int width) throws IOException{
         Map uploadResult = null;
         uploadResult = cloudinary.uploader().upload(image,
                     ObjectUtils.asMap("transformation",new Transformation().width(width)));
         return uploadResult;
     }
-    
-    //default sized upload
+
     public Map uploadImage(File image) throws IOException{
         return uploadImage(image, 1000);
     }

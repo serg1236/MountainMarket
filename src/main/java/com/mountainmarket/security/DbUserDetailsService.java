@@ -20,11 +20,13 @@ public class DbUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //отримання користувача з бази
         User user = userRepository.findByLogin(username);
         System.out.println("Okaaaay auth for: " + username);
         if(user == null) {
             throw new UsernameNotFoundException("Cannot find user with login: " + username);
         }
+        //ініціалізація ролі користувача в системі
         String role = user.getRole();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(role));
