@@ -27,10 +27,7 @@ import javax.servlet.MultipartConfigElement;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -123,8 +120,10 @@ public class EmbeddedJetty {
         WebAppContext context = new WebAppContext();
         context.setContextPath("/");
         context.setAttribute("javax.servlet.context.tempdir", scratchDir);
+/*        context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+                ".*//*[^/]*servlet-api-[^/]*\\.jar$|.*//*javax.servlet.jsp.jstl-.*\\.jar$|.*//*.*taglibs.*\\.jar$");*/
         context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
-                ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|.*/.*taglibs.*\\.jar$");
+                ".*jar$|.*/classes/.*");
         context.setResourceBase(baseUri.toASCIIString());
         context.setAttribute("org.eclipse.jetty.containerInitializers", jspInitializers());
         context.setAttribute(InstanceManager.class.getName(), new SimpleInstanceManager());
@@ -148,7 +147,13 @@ public class EmbeddedJetty {
 
 
     private ClassLoader getUrlClassLoader() {
-        ClassLoader jspClassLoader = new URLClassLoader(new URL[0], this.getClass().getClassLoader());
+        URL urlTaglibs = null;
+        try {
+            urlTaglibs = new File("META-INF").toURI().toURL();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        ClassLoader jspClassLoader = new URLClassLoader(new URL[]{urlTaglibs}, this.getClass().getClassLoader());
         return jspClassLoader;
     }
 
