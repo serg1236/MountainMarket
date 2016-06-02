@@ -66,7 +66,7 @@ define(['./module'],function(controllers){
                 lng: parseFloat(place.lng)
             };
         });
-        map.setCenter(vertexes[vertexes.length/2]);
+        map.setCenter(vertexes[(vertexes.length/2).toFixed()]);
         map.setZoom(9);
         var fuzzyWay = new google.maps.Polyline({
             path: vertexes,

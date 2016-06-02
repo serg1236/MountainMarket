@@ -34,8 +34,7 @@
                     </div>
                 </div>
                 <div class="input-field">
-                    <select name="route" id="route-select" required="true" ng-model="data.route"
-                    ng-options="option.names.EN for option in routes track by route.id" ng-model="data.route" required="true">
+                    <select name="route" id="route-select" ng-options="route as route.names.EN for route in routes track by route.id" ng-model="data.route" required="true">
                     </select>
                 </div>
                 <div class="input-field">

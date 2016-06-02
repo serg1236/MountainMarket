@@ -62,7 +62,7 @@
                     <div class="card light-green darken-3" ng-repeat="tour in tours | orderBy: orderCondition:orderDesc | filter:search | priceFilter:priceRange | actualFilter:actual | freeFilter:free |cartFilter:cart:currentUser track by $index " >
                         <div class="card-content white-text row">
                             <div class="col l4 m4 hide-on-small-and-down">
-                                <img ng-if="tour.route.places[0].imgUrl" class="tour-image" ng-src="{{tour.route.places[0].imgUrl}}"/>
+                                <img ng-if="tour.route.places[0].imgUrl" class="tour-image" ng-src="{{tour.route.places[(tour.route.places.length/2).toFixed()].imgUrl}}"/>
                                 <img ng-if="!tour.route.places[0].imgUrl" class="tour-image" src="http://res.cloudinary.com/imagine/image/upload/v1464370838/m-montagne_v5vwrz.jpg"/>
                             </div>
                             <div class="col l8 m8 s12">
@@ -81,14 +81,14 @@
                         <div class="card-action">
                             <a href="/route/{{tour.route.id}}" class="secondary-content"><i class="tiny material-icons">location_on</i>Show route</a>
                             <sec:authorize access="isAuthenticated()">
-                                <a href="#" class="secondary-content white-text" ng-click="addToCart(tour)" ng-if="(!checkInCart(tour)) && (!tour.participants||tour.capacity>tour.participants.length)">
+                                <a href="!#" class="secondary-content white-text" ng-click="addToCart(tour)" ng-if="(!checkInCart(tour)) && (!tour.participants||tour.capacity>tour.participants.length)">
                                     <i class="tiny material-icons">shopping_cart</i>
                                 Book place</a>
-                                <a href="#" ng-if="checkInCart(tour)" class="secondary-content white-text" ng-click="removeFromCart(tour)">
+                                <a href="!#" ng-if="checkInCart(tour)" class="secondary-content white-text" ng-click="removeFromCart(tour)">
                                     <i class="tiny material-icons">delete</i>
                                 Cancel booking</a>
                             </sec:authorize>
-                            <a href="#" class="secondary-content white-text" ng-click="feedbackModal(tour)"><i class="tiny material-icons">thumbs_up_down</i> Feedback</a>
+                            <a href="!#" class="secondary-content white-text" ng-click="feedbackModal(tour)"><i class="tiny material-icons">thumbs_up_down</i> Feedback</a>
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,6 @@
                           <sec:authentication property="principal.username" />
                         </a>
                         <ul id='login-dropdown' class='dropdown-content'>
-                            <li><a href="#!">My profile</a></li>
                             <li><a href="/logout_from_app">Logout</a></li>
                         </ul>
                     </sec:authorize>

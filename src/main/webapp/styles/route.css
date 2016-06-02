@@ -1,6 +1,6 @@
 .available-places {
-    overflow: auto;
-    max-height: 300px;
+    overflow: auto !important;
+    max-height: 200px;
 }
 
 .map {

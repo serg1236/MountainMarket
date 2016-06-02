@@ -23,8 +23,8 @@
                     <h5 ng-show="data.chosenPlaces.length > 0">Route:</h5>
                     <ul class="places collection" ng-show="data.chosenPlaces.length > 0">
                         <li class="collection-item" ng-repeat="place in data.chosenPlaces track by $index ">
-                            <div>{{place.names.EN}}
-                                <a href="#!" class="secondary-content" ng-click="removePlace($index)"><i class="material-icons">delete</i></a>
+                            <div style="display:flex"><span class="col s10">{{place.names.EN}}</span>
+                                <a href="#!" class="green-text col s2" ng-click="removePlace($index)"><i class="material-icons">delete</i></a>
                             </div>
                         </li>
                     </ul>
