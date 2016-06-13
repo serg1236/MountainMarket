@@ -19,6 +19,10 @@
     max-height: 100%;
 }
 
+.pagination li.active {
+    background-color: #4caf50 !important;
+}
+
 
 /****** Style Star Rating Widget *****/
 

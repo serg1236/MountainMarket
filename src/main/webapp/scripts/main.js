@@ -8,7 +8,8 @@ require.config({
 		angularRoute: './vendor/angular/angular-route.min',
 		domReady: './vendor/requirejs/domReady',
 		fileUpload: './vendor/ng-file-upload/ng-file-upload',
-		ngMaterial: './vendor/ng-material/ng-material'
+		ngMaterial: './vendor/ng-material/ng-material',
+		pagination: './vendor/pagination/pagination'
 	}, 
 	shim:{
 		
@@ -29,6 +30,10 @@ require.config({
 		},
 
 		ngMaterial: {
+		    deps: ['angular']
+		},
+
+		pagination : {
 		    deps: ['angular']
 		}
 

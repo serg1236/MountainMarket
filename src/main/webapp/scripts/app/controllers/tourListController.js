@@ -1,6 +1,7 @@
 define(['./module'],function(controllers){
     'use strict';
-    controllers.controller('TourListCtrl', ['$scope','$timeout','$http','fb','imageService','Upload', function($scope, $timeout, $http, fb, imageService, Upload) {
+    controllers.controller('TourListCtrl', ['$scope','$timeout','$http','fb','imageService','Upload',
+    function($scope, $timeout, $http, fb, imageService, Upload) {
 
     $scope.data = {};
 
